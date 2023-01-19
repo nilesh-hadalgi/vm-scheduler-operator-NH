@@ -1,0 +1,27 @@
+# permissions for end users to view gcpvmschedulerstopnhs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: gcpvmschedulerstopnh-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+  name: gcpvmschedulerstopnh-viewer-role
+rules:
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs/status
+  verbs:
+  - get

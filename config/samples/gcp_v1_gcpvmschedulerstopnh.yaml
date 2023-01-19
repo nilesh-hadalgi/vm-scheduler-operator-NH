@@ -1,0 +1,12 @@
+apiVersion: gcp.xyzcompany.com/v1
+kind: GCPVMSchedulerStopNH
+metadata:
+  labels:
+    app.kubernetes.io/name: gcpvmschedulerstopnh
+    app.kubernetes.io/instance: gcpvmschedulerstopnh-sample
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+  name: gcpvmschedulerstopnh-sample
+spec:
+  # TODO(user): Add fields here

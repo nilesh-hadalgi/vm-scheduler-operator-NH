@@ -1,0 +1,38 @@
+operator-sdk create api \
+    --group=aws \
+    --version=v1 \
+    --kind=AWSVMSchedulerStartNH
+
+
+	operator-sdk create api \
+    --group=azure \
+    --version=v1 \
+    --kind=AzureVMSchedulerStartNH
+
+	operator-sdk create api \
+    --group=gcp \
+    --version=v1 \
+    --kind=GCPVMSchedulerStartNH
+
+operator-sdk create api \
+    --group=aws \
+    --version=v1 \
+    --kind=AWSVMSchedulerStopNH
+
+
+	operator-sdk create api \
+    --group=azure \
+    --version=v1 \
+    --kind=AzureVMSchedulerStopNH
+
+	operator-sdk create api \
+    --group=gcp \
+    --version=v1 \
+    --kind=GCPVMSchedulerStopNH
+
+
+
+    api - 2 files - string names and status
+    manager.ymal - image
+    controller - need to be done
+    samples - start stop and all 
