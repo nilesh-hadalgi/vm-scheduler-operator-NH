@@ -1,0 +1,24 @@
+apiVersion: gcp.xyzcompany.com/v1
+kind: GCPVMSchedulerStartNH
+metadata:
+  labels:
+    app.kubernetes.io/name: gcpvmschedulerstartnh
+    app.kubernetes.io/instance: gcpvmschedulerstartnh-sample
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+  name: gcpvmschedulerstartnh-sample
+spec:
+  # TODO(user): Add fields here
+  image: "quay.io/manoj_dhanorkar/gcvmscheduler:v1.0"
+  
+  # Provide VM name and Resource Group and command "start" which will be scheduled by CR 
+  instance : "test-instance-1"
+  zone : "us-central1-c"
+  projectId : "onyx-authority-375707"
+  command : "start"
+
+  # Schedule period for the CronJob.
+  # This spec allow you to setup the stop schedule for VM
+  # Default: "0 18 * * *" # every weekday at 6 PM
+  startSchedule: "* * * * 1-5"

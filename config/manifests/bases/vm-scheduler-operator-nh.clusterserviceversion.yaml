@@ -1,0 +1,77 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[]'
+    capabilities: Basic Install
+  name: vm-scheduler-operator-nh.v0.0.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: AWSVMSchedulerStartNH is the Schema for the awsvmschedulerstartnhs
+        API
+      displayName: AWSVMScheduler Start NH
+      kind: AWSVMSchedulerStartNH
+      name: awsvmschedulerstartnhs.aws.xyzcompany.com
+      version: v1
+    - description: AWSVMSchedulerStopNH is the Schema for the awsvmschedulerstopnhs
+        API
+      displayName: AWSVMScheduler Stop NH
+      kind: AWSVMSchedulerStopNH
+      name: awsvmschedulerstopnhs.aws.xyzcompany.com
+      version: v1
+    - description: AzureVMSchedulerStartNH is the Schema for the azurevmschedulerstartnhs
+        API
+      displayName: Azure VMScheduler Start NH
+      kind: AzureVMSchedulerStartNH
+      name: azurevmschedulerstartnhs.azure.xyzcompany.com
+      version: v1
+    - description: AzureVMSchedulerStopNH is the Schema for the azurevmschedulerstopnhs
+        API
+      displayName: Azure VMScheduler Stop NH
+      kind: AzureVMSchedulerStopNH
+      name: azurevmschedulerstopnhs.azure.xyzcompany.com
+      version: v1
+    - description: GCPVMSchedulerStartNH is the Schema for the gcpvmschedulerstartnhs
+        API
+      displayName: GCPVMScheduler Start NH
+      kind: GCPVMSchedulerStartNH
+      name: gcpvmschedulerstartnhs.gcp.xyzcompany.com
+      version: v1
+    - description: GCPVMSchedulerStopNH is the Schema for the gcpvmschedulerstopnhs
+        API
+      displayName: GCPVMScheduler Stop NH
+      kind: GCPVMSchedulerStopNH
+      name: gcpvmschedulerstopnhs.gcp.xyzcompany.com
+      version: v1
+  description: VM Scheduler Operator
+  displayName: VM Scheduler Operator
+  icon:
+  - base64data: ""
+    mediatype: ""
+  install:
+    spec:
+      deployments: null
+    strategy: ""
+  installModes:
+  - supported: false
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - aws
+  - azure
+  - gcp
+  links:
+  - name: Vm Scheduler Operator Nh
+    url: https://vm-scheduler-operator-nh.domain
+  maturity: alpha
+  provider:
+    name: VM Scheduler Operator
+  version: 0.0.0

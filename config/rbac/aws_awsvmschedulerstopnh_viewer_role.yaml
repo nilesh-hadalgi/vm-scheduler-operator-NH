@@ -1,0 +1,27 @@
+# permissions for end users to view awsvmschedulerstopnhs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: awsvmschedulerstopnh-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+  name: awsvmschedulerstopnh-viewer-role
+rules:
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstopnhs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstopnhs/status
+  verbs:
+  - get

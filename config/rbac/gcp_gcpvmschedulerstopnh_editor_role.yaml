@@ -1,0 +1,31 @@
+# permissions for end users to edit gcpvmschedulerstopnhs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: gcpvmschedulerstopnh-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+  name: gcpvmschedulerstopnh-editor-role
+rules:
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs/status
+  verbs:
+  - get

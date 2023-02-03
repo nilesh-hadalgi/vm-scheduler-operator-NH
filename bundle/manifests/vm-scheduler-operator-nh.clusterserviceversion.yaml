@@ -1,0 +1,524 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "aws.xyzcompany.com/v1",
+          "kind": "AWSVMSchedulerStartNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "awsvmschedulerstartnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "awsvmschedulerstartnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "awsvmschedulerstartnh-sample"
+          },
+          "spec": {
+            "image": "quay.io/manoj_dhanorkar/awsvmscheduler:v1.0",
+            "instanceIds": "i-00ccfa801406d7215",
+            "startSchedule": "* * * * 1-5"
+          }
+        },
+        {
+          "apiVersion": "aws.xyzcompany.com/v1",
+          "kind": "AWSVMSchedulerStopNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "awsvmschedulerstopnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "awsvmschedulerstopnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "awsvmschedulerstopnh-sample"
+          },
+          "spec": {
+            "ec2_command": "stop",
+            "image": "quay.io/manoj_dhanorkar/awsvmscheduler:v1.0",
+            "instanceIds": "i-00ccfa801406d7215",
+            "stopSchedule": "53 8 * * 1-5"
+          }
+        },
+        {
+          "apiVersion": "azure.xyzcompany.com/v1",
+          "kind": "AzureVMSchedulerStartNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "azurevmschedulerstartnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "azurevmschedulerstartnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "azurevmschedulerstartnh-sample"
+          },
+          "spec": {
+            "azureRGName": "azure-assignment",
+            "azureVMName": "azure-vm",
+            "command": "start",
+            "image": "quay.io/manoj_dhanorkar/azurevmscheduler:v1.0",
+            "startSchedule": "* * * * 1-5"
+          }
+        },
+        {
+          "apiVersion": "azure.xyzcompany.com/v1",
+          "kind": "AzureVMSchedulerStopNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "azurevmschedulerstopnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "azurevmschedulerstopnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "azurevmschedulerstopnh-sample"
+          },
+          "spec": {
+            "azureRGName": "azure-assignment",
+            "azureVMName": "azure-vm",
+            "command": "stop",
+            "image": "quay.io/manoj_dhanorkar/azurevmscheduler:v1.0",
+            "stopSchedule": "05 12 * * 1-5"
+          }
+        },
+        {
+          "apiVersion": "gcp.xyzcompany.com/v1",
+          "kind": "GCPVMSchedulerStartNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "gcpvmschedulerstartnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "gcpvmschedulerstartnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "gcpvmschedulerstartnh-sample"
+          },
+          "spec": {
+            "command": "start",
+            "image": "quay.io/manoj_dhanorkar/gcvmscheduler:v1.0",
+            "instance": "test-instance-1",
+            "projectId": "onyx-authority-375707",
+            "startSchedule": "* * * * 1-5",
+            "zone": "us-central1-c"
+          }
+        },
+        {
+          "apiVersion": "gcp.xyzcompany.com/v1",
+          "kind": "GCPVMSchedulerStopNH",
+          "metadata": {
+            "labels": {
+              "app.kubernetes.io/created-by": "vm-scheduler-operator-nh",
+              "app.kubernetes.io/instance": "gcpvmschedulerstopnh-sample",
+              "app.kubernetes.io/managed-by": "kustomize",
+              "app.kubernetes.io/name": "gcpvmschedulerstopnh",
+              "app.kubernetes.io/part-of": "vm-scheduler-operator-nh"
+            },
+            "name": "gcpvmschedulerstopnh-sample"
+          },
+          "spec": {
+            "command": "stop",
+            "image": "quay.io/manoj_dhanorkar/gcvmscheduler:v1.0",
+            "instance": "test-instance-1",
+            "projectId": "onyx-authority-375707",
+            "stopSchedule": "* * * * 1-5",
+            "zone": "us-central1-c"
+          }
+        }
+      ]
+    capabilities: Basic Install
+    createdAt: "2023-02-03T04:49:24Z"
+    operators.operatorframework.io/builder: operator-sdk-v1.26.0
+    operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
+  name: vm-scheduler-operator-nh.v1.0.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: AWSVMSchedulerStartNH is the Schema for the awsvmschedulerstartnhs
+        API
+      displayName: AWSVMScheduler Start NH
+      kind: AWSVMSchedulerStartNH
+      name: awsvmschedulerstartnhs.aws.xyzcompany.com
+      version: v1
+    - description: AWSVMSchedulerStopNH is the Schema for the awsvmschedulerstopnhs
+        API
+      displayName: AWSVMScheduler Stop NH
+      kind: AWSVMSchedulerStopNH
+      name: awsvmschedulerstopnhs.aws.xyzcompany.com
+      version: v1
+    - description: AzureVMSchedulerStartNH is the Schema for the azurevmschedulerstartnhs
+        API
+      displayName: Azure VMScheduler Start NH
+      kind: AzureVMSchedulerStartNH
+      name: azurevmschedulerstartnhs.azure.xyzcompany.com
+      version: v1
+    - description: AzureVMSchedulerStopNH is the Schema for the azurevmschedulerstopnhs
+        API
+      displayName: Azure VMScheduler Stop NH
+      kind: AzureVMSchedulerStopNH
+      name: azurevmschedulerstopnhs.azure.xyzcompany.com
+      version: v1
+    - description: GCPVMSchedulerStartNH is the Schema for the gcpvmschedulerstartnhs
+        API
+      displayName: GCPVMScheduler Start NH
+      kind: GCPVMSchedulerStartNH
+      name: gcpvmschedulerstartnhs.gcp.xyzcompany.com
+      version: v1
+    - description: GCPVMSchedulerStopNH is the Schema for the gcpvmschedulerstopnhs
+        API
+      displayName: GCPVMScheduler Stop NH
+      kind: GCPVMSchedulerStopNH
+      name: gcpvmschedulerstopnhs.gcp.xyzcompany.com
+      version: v1
+  description: VM Scheduler Operator
+  displayName: VM Scheduler Operator
+  icon:
+  - base64data: ""
+    mediatype: ""
+  install:
+    spec:
+      clusterPermissions:
+      - rules:
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstartnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstartnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstartnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstopnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstopnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - aws.xyzcompany.com
+          resources:
+          - awsvmschedulerstopnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstartnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstartnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstartnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstopnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstopnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - azure.xyzcompany.com
+          resources:
+          - azurevmschedulerstopnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - batch
+          resources:
+          - cronjobs
+          - jobs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstartnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstartnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstartnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstopnhs
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstopnhs/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - gcp.xyzcompany.com
+          resources:
+          - gcpvmschedulerstopnhs/status
+          verbs:
+          - get
+          - patch
+          - update
+        - apiGroups:
+          - authentication.k8s.io
+          resources:
+          - tokenreviews
+          verbs:
+          - create
+        - apiGroups:
+          - authorization.k8s.io
+          resources:
+          - subjectaccessreviews
+          verbs:
+          - create
+        serviceAccountName: vm-scheduler-operator-nh-controller-manager
+      deployments:
+      - label:
+          app.kubernetes.io/component: manager
+          app.kubernetes.io/created-by: vm-scheduler-operator-nh
+          app.kubernetes.io/instance: controller-manager
+          app.kubernetes.io/managed-by: kustomize
+          app.kubernetes.io/name: deployment
+          app.kubernetes.io/part-of: vm-scheduler-operator-nh
+          control-plane: controller-manager
+        name: vm-scheduler-operator-nh-controller-manager
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              control-plane: controller-manager
+          strategy: {}
+          template:
+            metadata:
+              annotations:
+                kubectl.kubernetes.io/default-container: manager
+              labels:
+                control-plane: controller-manager
+            spec:
+              affinity:
+                nodeAffinity:
+                  requiredDuringSchedulingIgnoredDuringExecution:
+                    nodeSelectorTerms:
+                    - matchExpressions:
+                      - key: kubernetes.io/arch
+                        operator: In
+                        values:
+                        - amd64
+                        - arm64
+                        - ppc64le
+                        - s390x
+                      - key: kubernetes.io/os
+                        operator: In
+                        values:
+                        - linux
+              containers:
+              - args:
+                - --secure-listen-address=0.0.0.0:8443
+                - --upstream=http://127.0.0.1:8080/
+                - --logtostderr=true
+                - --v=0
+                image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.0
+                name: kube-rbac-proxy
+                ports:
+                - containerPort: 8443
+                  name: https
+                  protocol: TCP
+                resources:
+                  limits:
+                    cpu: 500m
+                    memory: 128Mi
+                  requests:
+                    cpu: 5m
+                    memory: 64Mi
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                    - ALL
+              - args:
+                - --health-probe-bind-address=:8081
+                - --metrics-bind-address=127.0.0.1:8080
+                - --leader-elect
+                command:
+                - /manager
+                image: quay.io/manoj_dhanorkar/vm-scheduler-operator-nh:v1.0.0
+                imagePullPolicy: Always
+                livenessProbe:
+                  httpGet:
+                    path: /healthz
+                    port: 8081
+                  initialDelaySeconds: 15
+                  periodSeconds: 20
+                name: manager
+                readinessProbe:
+                  httpGet:
+                    path: /readyz
+                    port: 8081
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+                resources:
+                  limits:
+                    cpu: 500m
+                    memory: 128Mi
+                  requests:
+                    cpu: 10m
+                    memory: 64Mi
+                securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                    - ALL
+              securityContext:
+                runAsNonRoot: true
+              serviceAccountName: vm-scheduler-operator-nh-controller-manager
+              terminationGracePeriodSeconds: 10
+      permissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - coordination.k8s.io
+          resources:
+          - leases
+          verbs:
+          - get
+          - list
+          - watch
+          - create
+          - update
+          - patch
+          - delete
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          verbs:
+          - create
+          - patch
+        serviceAccountName: vm-scheduler-operator-nh-controller-manager
+    strategy: deployment
+  installModes:
+  - supported: false
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - aws
+  - azure
+  - gcp
+  links:
+  - name: Vm Scheduler Operator Nh
+    url: https://vm-scheduler-operator-nh.domain
+  maturity: alpha
+  provider:
+    name: VM Scheduler Operator
+  version: 1.0.0

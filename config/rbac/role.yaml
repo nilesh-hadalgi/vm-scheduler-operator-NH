@@ -1,0 +1,176 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstartnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstartnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstartnhs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstopnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstopnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - aws.xyzcompany.com
+  resources:
+  - awsvmschedulerstopnhs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstartnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstartnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstartnhs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstopnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstopnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - azure.xyzcompany.com
+  resources:
+  - azurevmschedulerstopnhs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - batch
+  resources:
+  - cronjobs
+  - jobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstartnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstartnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstartnhs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - gcp.xyzcompany.com
+  resources:
+  - gcpvmschedulerstopnhs/status
+  verbs:
+  - get
+  - patch
+  - update

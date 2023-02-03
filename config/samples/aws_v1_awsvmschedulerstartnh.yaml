@@ -1,0 +1,23 @@
+apiVersion: aws.xyzcompany.com/v1
+kind: AWSVMSchedulerStartNH
+metadata:
+  labels:
+    app.kubernetes.io/name: awsvmschedulerstartnh
+    app.kubernetes.io/instance: awsvmschedulerstartnh-sample
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+  name: awsvmschedulerstartnh-sample
+spec:
+ # TODO(user): Add fields here
+  # Provide image name
+  image: "quay.io/manoj_dhanorkar/awsvmscheduler:v1.0"
+  
+  # Provide comma separated list of AWS instance ids which will be scheduled by CR 
+  instanceIds: "i-00ccfa801406d7215"
+
+
+  # Schedule period for the CronJob.
+  # This spec allow you to setup the stop schedule for VM
+  # Default: "0 18 * * *" # every weekday at 6 PM
+  startSchedule: "* * * * 1-5"

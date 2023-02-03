@@ -1,0 +1,25 @@
+apiVersion: azure.xyzcompany.com/v1
+kind: AzureVMSchedulerStartNH
+metadata:
+  labels:
+    app.kubernetes.io/name: azurevmschedulerstartnh
+    app.kubernetes.io/instance: azurevmschedulerstartnh-sample
+    app.kubernetes.io/part-of: vm-scheduler-operator-nh
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: vm-scheduler-operator-nh
+  name: azurevmschedulerstartnh-sample
+spec:
+  # TODO(user): Add fields here
+  # Provide image name
+  image: "quay.io/manoj_dhanorkar/azurevmscheduler:v1.0"
+  
+  # Provide VM name and Resource Group and command "start" which will be scheduled by CR 
+  command: "start"
+  azureVMName : "azure-vm"
+  azureRGName : "azure-assignment"
+  
+
+  # Schedule period for the CronJob.
+  # This spec allow you to setup the stop schedule for VM
+  # Default: "0 18 * * *" # every weekday at 6 PM
+  startSchedule: "* * * * 1-5"

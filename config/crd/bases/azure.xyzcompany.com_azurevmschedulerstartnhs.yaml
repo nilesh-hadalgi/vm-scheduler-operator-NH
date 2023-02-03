@@ -1,0 +1,77 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.10.0
+  creationTimestamp: null
+  name: azurevmschedulerstartnhs.azure.xyzcompany.com
+spec:
+  group: azure.xyzcompany.com
+  names:
+    kind: AzureVMSchedulerStartNH
+    listKind: AzureVMSchedulerStartNHList
+    plural: azurevmschedulerstartnhs
+    singular: azurevmschedulerstartnh
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: AzureVMSchedulerStartNH is the Schema for the azurevmschedulerstartnhs
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AzureVMSchedulerStartNHSpec defines the desired state of
+              AzureVMSchedulerStartNH
+            properties:
+              azureRGName:
+                type: string
+              azureVMName:
+                description: Foo is an example field of AzureVMSchedulerStartNH. Edit
+                  azurevmschedulerstartnh_types.go to remove/update
+                type: string
+              command:
+                type: string
+              image:
+                type: string
+              startSchedule:
+                description: Schedule period for the CronJob. This spec allows you
+                  to setup the start schedule for VM
+                type: string
+            required:
+            - azureRGName
+            - azureVMName
+            - command
+            - image
+            - startSchedule
+            type: object
+          status:
+            description: AzureVMSchedulerStartNHStatus defines the observed state
+              of AzureVMSchedulerStartNH
+            properties:
+              vmStartStatus:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: string
+            required:
+            - vmStartStatus
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

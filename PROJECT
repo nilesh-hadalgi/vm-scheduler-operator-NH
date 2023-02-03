@@ -1,0 +1,65 @@
+domain: xyzcompany.com
+layout:
+- go.kubebuilder.io/v3
+multigroup: true
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: vm-scheduler-operator-nh
+repo: github.com/nilesh-hadalgi/vm-scheduler-operator-NH
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: aws
+  kind: AWSVMSchedulerStartNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/aws/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: azure
+  kind: AzureVMSchedulerStartNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/azure/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: gcp
+  kind: GCPVMSchedulerStartNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/gcp/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: aws
+  kind: AWSVMSchedulerStopNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/aws/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: azure
+  kind: AzureVMSchedulerStopNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/azure/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: xyzcompany.com
+  group: gcp
+  kind: GCPVMSchedulerStopNH
+  path: github.com/nilesh-hadalgi/vm-scheduler-operator-NH/apis/gcp/v1
+  version: v1
+version: "3"
